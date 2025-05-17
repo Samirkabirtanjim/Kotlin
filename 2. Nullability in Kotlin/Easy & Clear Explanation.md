@@ -1,4 +1,4 @@
-**English explanation** of **Nullability in Kotlin**
+**Nullability in Kotlin**
 
 
 ## ✨ Nullability in Kotlin – Explained
