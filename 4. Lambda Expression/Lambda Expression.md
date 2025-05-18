@@ -11,3 +11,9 @@ A **Lambda Expression** is a short block of code that takes input and returns a 
 ### 🔹 Syntax:
 ```kotlin
 val lambdaName: (InputType) -> ReturnType = { input -> output }
+```
+### Example:
+```kotlin
+val square: (Int) -> Int = { number -> number * number }
+println(square(5))  // Output: 25
+```
