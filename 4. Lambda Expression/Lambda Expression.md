@@ -8,6 +8,7 @@ Lambda Expressions in Kotlin are a concise way to define anonymous functions. Th
 
 A **Lambda Expression** is a short block of code that takes input and returns a result. You can pass it as a parameter to functions or assign it to variables.
 
+---
 ### ✅ Syntax:
 ```kotlin
 val lambdaName: (InputType) -> ReturnType = { input -> output }
