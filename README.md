@@ -34,14 +34,6 @@ This repository contains organized and practical examples as I explore Kotlin pr
 
 ---
 
-## 📈 Progress
-
-- ✅ Basics: Complete
-- 🔁 Practicing Control Flow
-- 📚 Moving to Object-Oriented Programming (OOP) next
-
----
-
 ## 🔗 Useful Links
 
 - [Kotlin Docs](https://kotlinlang.org/docs/home.html)
