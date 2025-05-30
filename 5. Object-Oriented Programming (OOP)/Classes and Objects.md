@@ -45,12 +45,12 @@ fun main() {
 
 ---
 
-##🔹 What is a Constructor in Kotlin?
+## 🔹 What is a Constructor in Kotlin?
 A constructor is a special function that is called when you create an object from a class. It initializes the properties (variables) of the class.
 
 There are two types of constructors in Kotlin:
 
-🔸 1. Primary Constructor (Defined in the class header)
+* 🔸 1. Primary Constructor (Defined in the class header)
 
 ```kotlin
 class Person(val name: String, val age: Int)
@@ -65,7 +65,7 @@ fun main() {
 
 ---
 
-##🔸 2. Secondary Constructor (Defined inside the class)
+*  🔸 2. Secondary Constructor (Defined inside the class)
 Used when you need more flexibility.
 
 ```kotlin
