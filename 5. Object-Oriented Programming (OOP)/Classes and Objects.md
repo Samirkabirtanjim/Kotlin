@@ -79,3 +79,41 @@ class Person {
     }
 }
 ```
+
+---
+
+## 🔍 What Is an init Block?
+
+In Kotlin, the init block is a special block that runs automatically when an object is created from a class. It's often used to initialize or validate values, or show a message right after object creation.
+
+```kotlin
+package LearningDay11OOP
+
+// Create a User class with an init block that prints a welcome message
+class User {
+    init {
+        println("🎉 Welcome! A new user has been created.")
+    }
+}
+
+fun main() {
+    val user1 = User() // This will trigger the init block
+}
+```
+---
+
+## 💡 What Happens When You Run This?
+As soon as User() is called in main(), the init block runs.
+
+It prints: 
+
+```sql
+🎉 Welcome! A new user has been created.
+```
+
+---
+
+## 🧠 Why Use init Block?
+
+* To set up logic that runs immediately when an object is created.
+* To print messages, check values, or run setup code
