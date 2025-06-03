@@ -117,3 +117,53 @@ It prints:
 
 * To set up logic that runs immediately when an object is created.
 * To print messages, check values, or run setup code
+---
+
+## 📱 Example: E-Commerce App (like Daraz / Amazon)
+🧾 Problem:
+You want to show a list of products in your app. Each product has:
+
+* A name (e.g., “Shoes”)
+* A price (e.g., 1200.00)
+* A stock status (e.g., true or false)
+
+❌ Without a Class
+If you don’t use a class, you might try:
+
+```kotlin
+
+val product1Name = "Shoes"
+val product1Price = 1200.0
+val product1Stock = true
+
+val product2Name = "Shirt"
+val product2Price = 800.0
+val product2Stock = false
+```
+---
+This gets messy fast. It's hard to manage or reuse.
+What if you have 100 products? What if you want to pass the product to another screen?
+
+✅ With a Class
+Create a Product class:
+
+```kotlin
+
+class Product(val name: String, val price: Double, val inStock: Boolean)
+Now use it like this:
+```
+---
+```kotlin
+
+val product1 = Product("Shoes", 1200.0, true)
+val product2 = Product("Shirt", 800.0, false)
+
+println(product1.name)      // Outputs: Shoes
+println(product2.inStock)   // Outputs: false
+```
+---
+You can even make a list:
+```kotlin
+
+val productList = listOf(product1, product2)
+```
