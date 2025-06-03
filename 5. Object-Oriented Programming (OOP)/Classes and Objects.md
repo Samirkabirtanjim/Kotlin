@@ -150,8 +150,8 @@ Create a Product class:
 ```kotlin
 
 class Product(val name: String, val price: Double, val inStock: Boolean)
-Now use it like this:
 ```
+Now use it like this:
 ---
 ```kotlin
 
