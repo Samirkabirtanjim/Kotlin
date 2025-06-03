@@ -128,7 +128,7 @@ You want to show a list of products in your app. Each product has:
 * A stock status (e.g., true or false)
 
 ❌ Without a Class
-If you don’t use a class, you might try:
+* If you don’t use a class, you might try:
 
 ```kotlin
 
