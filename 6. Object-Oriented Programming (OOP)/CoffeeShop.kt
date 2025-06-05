@@ -7,23 +7,30 @@ class CoffeeBill(){
     }
 
     fun billing(prices: List<Double>, names: List<String>){
+        if(prices.isEmpty() || names.isEmpty()){
+            billing()
+            return
+        }
 
-        when(prices.size){
-            0 -> billing()
-            1 -> println("1 ${names[0]}, Price: ${prices[0]}")
-            2 -> println("1 ${names[0]},1 ${names[1]}, Price: ${prices[0]+prices[1]}")
-            3 -> println("1 ${names[0]},1 ${names[1]},1 ${names[2]}, Price: ${prices[0]+prices[1]+prices[2]}")
-            else -> {
-                val totalBill = prices.sum()
-                val discount = 0.1
-                val finalPrice = totalBill - (totalBill * discount)
-                println("${names}, total price: $finalPrice")
-            }
+        val totalItem = prices.size
+        for (i in 0 until totalItem) {
+            println("- 1 ${names[i]}: ${prices[i]} BDT")
+        }
+
+        val total = prices.sum()
+        if (totalItem > 3){
+            val discount = 0.1
+            val totalPrice = total - (total * discount)
+            println("Total (before discount): ${"%.2f".format(totalPrice)} BDT")
+            println("Discount Applied: 10%")
+            println("Final Bill: ${"%.2f".format(totalPrice)} BDT")
+        }else{
+            println("Total Bill: ${"%.2f".format(total)} BDT")
         }
     }
 }
 
 fun main(){
     val bill1 = CoffeeBill()
-    bill1.billing(listOf(40.00,50.00,55.00,55.00),listOf("Cappuccino","Latte","Milk Shake","Milk Shake"))
+    bill1.billing(listOf(50.00,55.00,55.00),listOf("Latte","Milk Shake","Milk Shake"))
 }
