@@ -1,14 +1,13 @@
 package LearningDay11OOP
 
-open class FoodOrder(){
+open class FoodOrder {
 
-    open fun billing(){
+    open fun billing() {
         println("No items ordered")
     }
 
-    open fun billing(prices: List<Double>, names: List<String>){
-
-        if (prices.isEmpty() || names.isEmpty()){
+    open fun billing(prices: List<Double>, names: List<String>, isMember: Boolean) {
+        if (prices.isEmpty() || names.isEmpty()) {
             billing()
             return
         }
@@ -17,66 +16,70 @@ open class FoodOrder(){
         val grouped = paired.groupBy { it.first }
 
         println("Order Summary:")
-        var total = 0.0
+        var subtotal = 0.0
 
-        // {burger, 2}
-        for ((itemName, itemList) in grouped){
+        for ((itemName, itemList) in grouped) {
             val quantity = itemList.size
             val pricePerItem = itemList.first().second
             val itemTotal = quantity * pricePerItem
-            total += itemTotal
-
+            subtotal += itemTotal
             println("- $quantity $itemName: ${"%.2f".format(itemTotal)} BDT")
         }
 
-        println("Total (Before discount): ${"%.2f".format(total)} BDT")
+        println("\nSubtotal: ${"%.2f".format(subtotal)} BDT")
 
-        if(names.size > 3){
-            val discount = total * 0.15
-            val totalFinal = total - discount
-            println("Discount Applied: 15%")
-            println("Final Bill: ${"%.2f".format(totalFinal)} BDT")
-        }else{
-            println("Final Bill ${"%.2f".format(total)} BDT")
+        var finalAmount = subtotal
+
+        if (names.size > 3) {
+            val discount5 = subtotal * 0.05
+            finalAmount -= discount5
+            println("5% Discount: -${"%.2f".format(discount5)} BDT")
         }
+
+        if (isMember) {
+            val memberDiscount = finalAmount * 0.15
+            finalAmount -= memberDiscount
+            println("Membership Discount (15%): -${"%.2f".format(memberDiscount)} BDT")
+        }
+
+        println("Final Bill: ${"%.2f".format(finalAmount)} BDT")
     }
 }
 
-class FastFoodOrder: FoodOrder(){
-    override fun billing(){
-        super.billing()
-    }
-
-    override fun billing(prices: List<Double>, names: List<String>) {
-        super.billing(prices, names)
-        println("Note: Fast food charges include packaging.")
-    }
-}
-
-class HealthyFoodOrder: FoodOrder(){
+class FastFoodOrder : FoodOrder() {
     override fun billing() {
         super.billing()
     }
 
-    override fun billing(prices: List<Double>, names: List<String>) {
-        super.billing(prices, names)
-        println("Note: Healthy food comes with free detox water.")
+    override fun billing(prices: List<Double>, names: List<String>, isMember: Boolean) {
+        super.billing(prices, names, isMember)
+        println("\nNote: Fast food charges include packaging.")
     }
 }
 
-fun main(){
+class HealthyFoodOrder : FoodOrder() {
+    override fun billing() {
+        super.billing()
+    }
 
+    override fun billing(prices: List<Double>, names: List<String>, isMember: Boolean) {
+        super.billing(prices, names, isMember)
+        println("\nNote: Healthy food comes with free detox water.")
+    }
+}
+
+fun main() {
     val names = listOf("Burger", "Pizza", "Burger", "Coke")
     val prices = listOf(120.0, 250.0, 120.0, 40.0)
 
-    val firstOrder = FastFoodOrder()
-    firstOrder.billing(prices,names)
+    val fastOrder = FastFoodOrder()
+    fastOrder.billing(prices, names, isMember = true)
 
-    println("\n--\n")
+    println("\n---\n")
 
     val healthyNames = listOf("Salad", "Juice", "Salad", "Juice", "Soup")
     val healthyPrices = listOf(100.0, 80.0, 100.0, 80.0, 120.0)
 
-    val secondOrder = HealthyFoodOrder()
-    secondOrder.billing(healthyPrices, healthyNames)
+    val healthyOrder = HealthyFoodOrder()
+    healthyOrder.billing(healthyPrices, healthyNames, isMember = false)
 }
